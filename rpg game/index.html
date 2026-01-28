@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Realms - Text-Based RPG</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header Section -->
+        <header class="game-header">
+            <div class="header-left">
+                <h1><i class="fas fa-dragon"></i> Eternal Realms</h1>
+                <div class="game-version">Core Engine v1.0</div>
+            </div>
+            <div class="header-right">
+                <div class="player-info">
+                    <div class="player-name" id="player-name">Adventurer</div>
+                    <div class="player-level">Level <span id="player-level">1</span></div>
+                </div>
+                <div class="health-bar-container">
+                    <div class="health-bar-label">
+                        <i class="fas fa-heart"></i> HP
+                    </div>
+                    <div class="health-bar">
+                        <div class="health-bar-fill" id="health-bar-fill"></div>
+                        <span class="health-text" id="health-text">100/100</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-main">
+            <!-- Left Panel: Character & Stats -->
+            <div class="left-panel">
+                <div class="character-card">
+                    <div class="character-avatar">
+                        <i class="fas fa-user" id="character-icon"></i>
+                    </div>
+                    <div class="character-details">
+                        <div class="stat-row">
+                            <span class="stat-label">Race:</span>
+                            <span class="stat-value" id="character-race">Human</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Class:</span>
+                            <span class="stat-value" id="character-class">Warrior</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">ATK:</span>
+                            <span class="stat-value" id="stat-atk">10</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">DEF:</span>
+                            <span class="stat-value" id="stat-def">8</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">SPD:</span>
+                            <span class="stat-value" id="stat-spd">5</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">CRIT:</span>
+                            <span class="stat-value" id="stat-crit">5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inventory-section">
+                    <h3><i class="fas fa-backpack"></i> Inventory</h3>
+                    <div class="inventory-items" id="inventory-items">
+                        <!-- Items will be added here dynamically -->
+                    </div>
+                    <div class="gold-display">
+                        <i class="fas fa-coins"></i> Gold: <span id="gold-amount">50</span>
+                    </div>
+                </div>
+
+                <div class="system-controls">
+                    <h3><i class="fas fa-cog"></i> System</h3>
+                    <div class="control-buttons">
+                        <button class="btn-control" id="btn-save"><i class="fas fa-save"></i> Save</button>
+                        <button class="btn-control" id="btn-load"><i class="fas fa-folder-open"></i> Load</button>
+                        <button class="btn-control" id="btn-reset"><i class="fas fa-redo"></i> Reset</button>
+                        <button class="btn-control" id="btn-redeem"><i class="fas fa-gift"></i> Redeem</button>
+                                <button class="btn-control" id="btn-rarity-stats"><i class="fas fa-chart-bar"></i> Rarity Stats</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Panel: Game Log & Combat -->
+            <div class="center-panel">
+                <div class="game-log-container">
+                    <div class="game-log-header">
+                        <h3><i class="fas fa-scroll"></i> Game Log</h3>
+                        <div class="log-controls">
+                            <button class="btn-small" id="btn-clear-log"><i class="fas fa-trash"></i> Clear</button>
+                            <button class="btn-small" id="btn-auto-scroll"><i class="fas fa-arrow-down"></i> Auto Scroll</button>
+                        </div>
+                    </div>
+                    <div class="game-log" id="game-log">
+                        <div class="log-entry system">Welcome to Eternal Realms! Choose your race and class to begin your adventure.</div>
+                    </div>
+                </div>
+
+                <div class="combat-section">
+                    <div class="combat-header">
+                        <h3><i class="fas fa-fist-raised"></i> Combat</h3>
+                        <div class="combat-controls">
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="auto-battle-toggle">
+                                <label for="auto-battle-toggle">Auto Battle</label>
+                            </div>
+                            <button class="btn-small" id="btn-flee"><i class="fas fa-running"></i> Flee</button>
+                        </div>
+                    </div>
+                    <div class="combat-info">
+                        <div class="enemy-display">
+                            <div class="enemy-icon" id="enemy-icon">
+                                <i class="fas fa-pastafarianism"></i>
+                            </div>
+                            <div class="enemy-details">
+                                <div class="enemy-name" id="enemy-name">- No Enemy -</div>
+                                <div class="enemy-health-bar">
+                                    <div class="enemy-health-fill" id="enemy-health-fill"></div>
+                                </div>
+                                <div class="enemy-health-text" id="enemy-health-text">-/-</div>
+                            </div>
+                        </div>
+                        <div class="combat-actions" id="combat-actions">
+                            <button class="btn-action attack" id="btn-attack"><i class="fas fa-sword"></i> Attack</button>
+                            <button class="btn-action skill" id="btn-skill-1"><i class="fas fa-fire"></i> Skill 1</button>
+                            <button class="btn-action skill" id="btn-skill-2"><i class="fas fa-shield-alt"></i> Skill 2</button>
+                            <button class="btn-action item" id="btn-use-item"><i class="fas fa-potion"></i> Use Item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Activities & Navigation -->
+            <div class="right-panel">
+                <div class="navigation-section">
+                    <h3><i class="fas fa-map-signs"></i> Navigation</h3>
+                    <div class="nav-buttons">
+                        <button class="btn-nav" id="btn-town"><i class="fas fa-city"></i> Town</button>
+                        <button class="btn-nav" id="btn-dungeon"><i class="fas fa-dungeon"></i> Dungeon</button>
+                        <button class="btn-nav" id="btn-forest"><i class="fas fa-tree"></i> Forest</button>
+                        <button class="btn-nav" id="btn-mine"><i class="fas fa-mountain"></i> Mine</button>
+                    </div>
+                </div>
+
+                <div class="activity-section">
+                    <h3><i class="fas fa-hammer"></i> Activities</h3>
+                    <div class="activity-buttons">
+                        <button class="btn-activity" id="btn-mine"><i class="fas fa-gem"></i> Mining</button>
+                        <button class="btn-activity" id="btn-forage"><i class="fas fa-leaf"></i> Foraging</button>
+                        <button class="btn-activity" id="btn-lumber"><i class="fas fa-tree"></i> Lumberjack</button>
+                        <button class="btn-activity" id="btn-hunt"><i class="fas fa-paw"></i> Hunting</button>
+                        <button class="btn-activity" id="btn-forge"><i class="fas fa-hammer"></i> Forging</button>
+                        <button class="btn-activity" id="btn-cook"><i class="fas fa-utensils"></i> Cooking</button>
+                    </div>
+                </div>
+
+                <div class="quest-section">
+                    <h3><i class="fas fa-quest"></i> Active Quest</h3>
+                    <div class="quest-card" id="quest-card">
+                        <div class="quest-title" id="quest-title">No Active Quest</div>
+                        <div class="quest-desc" id="quest-desc">Visit the town to get a quest.</div>
+                        <div class="quest-progress" id="quest-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                        <button class="btn-small" id="btn-new-quest"><i class="fas fa-dice"></i> Generate Quest</button>
+                    </div>
+                </div>
+
+                <div class="shop-section">
+                    <h3><i class="fas fa-store"></i> Shop</h3>
+                    <div class="shop-buttons">
+                        <button class="btn-shop" id="btn-buy-items"><i class="fas fa-shopping-cart"></i> Buy Items</button>
+                        <button class="btn-shop" id="btn-sell-items"><i class="fas fa-coins"></i> Sell Items</button>
+                        <button class="btn-shop" id="btn-buy-equipment"><i class="fas fa-helmet-battle"></i> Equipment</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="game-footer">
+            <div class="footer-left">
+                <div class="xp-display">
+                    <i class="fas fa-star"></i> XP: <span id="xp-current">0</span>/<span id="xp-needed">100</span>
+                </div>
+                <div class="time-display">
+                    <i class="fas fa-clock"></i> Play Time: <span id="play-time">00:00:00</span>
+                </div>
+            </div>
+            <div class="footer-center">
+                <div class="system-log" id="system-log">
+                    <i class="fas fa-info-circle"></i> System ready.
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="game-speed">
+                    <label for="game-speed">Speed:</label>
+                    <select id="game-speed">
+                        <option value="1">1x</option>
+                        <option value="2" selected>2x</option>
+                        <option value="5">5x</option>
+                        <option value="10">10x</option>
+                    </select>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Modals -->
+        <div class="modal" id="character-creation-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-user-plus"></i> Character Creation</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="creation-step" id="step-race">
+                        <h3>Choose Your Race</h3>
+                        <div class="race-options" id="race-options">
+                            <!-- Races loaded from JSON -->
+                        </div>
+                    </div>
+                    <div class="creation-step hidden" id="step-class">
+                        <h3>Choose Your Class</h3>
+                        <div class="class-options" id="class-options">
+                            <!-- Classes loaded from JSON -->
+                        </div>
+                    </div>
+                    <div class="creation-step hidden" id="step-name">
+                        <h3>Name Your Character</h3>
+                        <div class="name-input">
+                            <input type="text" id="character-name-input" placeholder="Enter character name" maxlength="20">
+                            <button class="btn-confirm" id="btn-confirm-name">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-nav" id="btn-prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button class="btn-nav" id="btn-next-step">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="redeem-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-gift"></i> Redeem Code</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Enter a redeem code to unlock special features:</p>
+                    <div class="redeem-input">
+                        <input type="text" id="redeem-code-input" placeholder="Enter code">
+                        <button class="btn-confirm" id="btn-redeem-code">Redeem</button>
+                    </div>
+                    <div class="redeem-hint">
+                        <p><strong>Example codes:</strong></p>
+                        <p><code>AUTO-BATTLE</code> - Unlocks Auto Battle feature</p>
+                        <p><code>HIDDEN-RACE</code> - Unlocks Hidden Races</p>
+                        <p><code>START-1000</code> - 1000 Gold</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/core/utils.js"></script>
+    <script src="js/core/dataManager.js"></script>
+    <script src="js/core/ui.js"></script>
+    <script src="js/systems/character.js"></script>
+    <script src="js/systems/combat.js"></script>
+    <script src="js/systems/skill.js"></script>
+    <script src="js/systems/dungeon.js"></script>
+    <script src="js/systems/profession.js"></script>
+    <script src="js/systems/quest.js"></script>
+    <script src="js/systems/shop.js"></script>
+    <script src="js/systems/redeem.js"></script>
+    <script src="js/api/groq.js"></script>
+    <script src="js/systems/profession.js"></script>
+    <script src="js/systems/quest.js"></script>
+    <script src="js/systems/shop.js"></script>
+    <script src="js/systems/redeem.js"></script>
+    <script src="js/core/game.js"></script>
+</body>
+</html>

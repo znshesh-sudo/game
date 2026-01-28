@@ -1,0 +1,110 @@
+// data/items.json (contoh dengan rarity)
+{
+    "items": [
+        {
+            "id": "copper_sword",
+            "name": "Copper Sword",
+            "description": "A basic copper sword",
+            "type": "weapon",
+            "subtype": "sword",
+            "value": 50,
+            "rarity": "common",
+            "stats": { "atk": 8 },
+            "requirements": { "level": 1 },
+            "icon": "fas fa-sword"
+        },
+        {
+            "id": "iron_sword",
+            "name": "Iron Sword",
+            "description": "A sturdy iron sword",
+            "type": "weapon",
+            "subtype": "sword",
+            "value": 120,
+            "rarity": "uncommon",
+            "stats": { "atk": 15 },
+            "requirements": { "level": 5 },
+            "icon": "fas fa-sword"
+        },
+        {
+            "id": "steel_sword",
+            "name": "Steel Sword",
+            "description": "A well-crafted steel sword",
+            "type": "weapon",
+            "subtype": "sword",
+            "value": 300,
+            "rarity": "rare",
+            "stats": { "atk": 25, "crit": 5 },
+            "requirements": { "level": 10 },
+            "icon": "fas fa-sword"
+        },
+        {
+            "id": "dragonbone_sword",
+            "name": "Dragonbone Sword",
+            "description": "Forged from dragon bones",
+            "type": "weapon",
+            "subtype": "sword",
+            "value": 1000,
+            "rarity": "epic",
+            "stats": { "atk": 45, "crit": 10, "fire_damage": 10 },
+            "requirements": { "level": 20 },
+            "icon": "fas fa-sword"
+        },
+        {
+            "id": "excalibur",
+            "name": "Excalibur",
+            "description": "The legendary sword of kings",
+            "type": "weapon",
+            "subtype": "sword",
+            "value": 5000,
+            "rarity": "legendary",
+            "stats": { "atk": 80, "crit": 15, "all_stats": 10 },
+            "requirements": { "level": 30 },
+            "icon": "fas fa-crown"
+        },
+        {
+            "id": "godslayer",
+            "name": "Godslayer",
+            "description": "A sword that can slay gods",
+            "type": "weapon",
+            "subtype": "sword",
+            "value": 20000,
+            "rarity": "mythic",
+            "stats": { "atk": 150, "crit": 25, "armor_pen": 50 },
+            "requirements": { "level": 50 },
+            "icon": "fas fa-star"
+        },
+        {
+            "id": "small_potion",
+            "name": "Small Health Potion",
+            "description": "Restores 50 HP",
+            "type": "consumable",
+            "subtype": "potion",
+            "value": 20,
+            "rarity": "common",
+            "effect": { "hp": 50 },
+            "icon": "fas fa-wine-bottle"
+        },
+        {
+            "id": "greater_potion",
+            "name": "Greater Health Potion",
+            "description": "Restores 200 HP",
+            "type": "consumable",
+            "subtype": "potion",
+            "value": 100,
+            "rarity": "uncommon",
+            "effect": { "hp": 200 },
+            "icon": "fas fa-flask"
+        },
+        {
+            "id": "elixir_of_life",
+            "name": "Elixir of Life",
+            "description": "Fully restores HP and grants temporary max HP",
+            "type": "consumable",
+            "subtype": "elixir",
+            "value": 500,
+            "rarity": "legendary",
+            "effect": { "hp": "full", "max_hp_buff": 20, "duration": 300 },
+            "icon": "fas fa-vial"
+        }
+    ]
+}

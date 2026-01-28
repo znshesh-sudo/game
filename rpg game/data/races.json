@@ -1,0 +1,73 @@
+// data/races.json
+{
+    "races": [
+        {
+            "id": "human",
+            "name": "Human",
+            "description": "Versatile and adaptable, humans excel in any path they choose.",
+            "stats": { "hp": 100, "atk": 10, "def": 8, "spd": 5, "crit": 5 },
+            "abilities": ["Adaptability"],
+            "hidden": false
+        },
+        {
+            "id": "elf",
+            "name": "Elf",
+            "description": "Agile and magical, elves have enhanced speed and magic affinity.",
+            "stats": { "hp": 80, "atk": 8, "def": 6, "spd": 8, "crit": 8 },
+            "abilities": ["Forest Stride", "Magic Affinity"],
+            "hidden": false
+        },
+        {
+            "id": "dwarf",
+            "name": "Dwarf",
+            "description": "Strong and sturdy, dwarves have high defense and mining skills.",
+            "stats": { "hp": 120, "atk": 12, "def": 12, "spd": 3, "crit": 3 },
+            "abilities": ["Stonecunning", "Poison Resistance"],
+            "hidden": false
+        },
+        {
+            "id": "vampire",
+            "name": "Vampire",
+            "description": "Undead beings with life steal and night vision. Hidden race.",
+            "stats": { "hp": 90, "atk": 15, "def": 7, "spd": 7, "crit": 10 },
+            "abilities": ["Life Steal", "Night Vision", "Regeneration"],
+            "hidden": true,
+            "unlockCondition": "Defeat 100 monsters at night"
+        }
+    ]
+}
+
+// data/monsters.json
+{
+    "monsters": [
+        {
+            "id": "goblin",
+            "name": "Goblin",
+            "type": "goblin",
+            "level": 1,
+            "stats": { "hp": 30, "maxHp": 30, "atk": 5, "def": 2, "spd": 4, "crit": 5 },
+            "exp": 10,
+            "gold": [1, 5],
+            "drops": [
+                { "itemId": "small_potion", "chance": 20 },
+                { "itemId": "leather_scrap", "chance": 40 }
+            ],
+            "abilities": ["basic_attack"]
+        },
+        {
+            "id": "orc",
+            "name": "Orc Warrior",
+            "type": "orc",
+            "level": 3,
+            "stats": { "hp": 60, "maxHp": 60, "atk": 12, "def": 8, "spd": 3, "crit": 5 },
+            "exp": 25,
+            "gold": [5, 15],
+            "drops": [
+                { "itemId": "medium_potion", "chance": 15 },
+                { "itemId": "iron_ore", "chance": 30 },
+                { "itemId": "orc_axe", "chance": 5 }
+            ],
+            "abilities": ["basic_attack", "furious_strike"]
+        }
+    ]
+}

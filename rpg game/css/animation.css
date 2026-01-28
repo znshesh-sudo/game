@@ -1,0 +1,141 @@
+/* css/animations.css */
+/* Animation for text typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: var(--highlight); }
+}
+
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink .75s step-end infinite;
+    border-right: 3px solid var(--highlight);
+}
+
+/* Combat animations */
+@keyframes damageFlash {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(231, 76, 60, 0.3); }
+}
+
+@keyframes healFlash {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(46, 204, 113, 0.3); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes levelUp {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes goldGlow {
+    0%, 100% { box-shadow: 0 0 5px var(--warning); }
+    50% { box-shadow: 0 0 20px var(--warning); }
+}
+
+/* Apply animations */
+.damage-animation {
+    animation: damageFlash 0.5s ease, shake 0.5s ease;
+}
+
+.heal-animation {
+    animation: healFlash 0.5s ease;
+}
+
+.level-up-animation {
+    animation: levelUp 0.5s ease;
+}
+
+.gold-glow {
+    animation: goldGlow 1s ease infinite;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s ease;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.3s ease;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Button click animation */
+.btn-action:active:not(:disabled),
+.btn-nav:active,
+.btn-activity:active,
+.btn-control:active {
+    transform: translateY(1px);
+}
+
+/* Health bar animation */
+.health-bar-fill {
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Enemy spawn animation */
+.enemy-spawn {
+    animation: slideInRight 0.5s ease, pulse 0.5s ease 0.5s;
+}
+
+/* Item pickup animation */
+.item-pickup {
+    animation: slideInLeft 0.3s ease, pulse 0.3s ease 0.3s;
+}
+
+/* Critical hit animation */
+.critical-hit {
+    position: relative;
+    color: #ffd700;
+    font-weight: bold;
+    animation: pulse 0.2s ease 3;
+}
+
+.critical-hit::after {
+    content: "CRITICAL!";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #ffd700;
+    animation: fadeIn 0.3s ease;
+}

@@ -1,0 +1,286 @@
+/* css/rarity.css */
+/* Rarity System Styles */
+
+/* Rarity Filters */
+.rarity-filters {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius);
+}
+
+.filter-title {
+    margin-bottom: 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.filter-btn {
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filter-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+.filter-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Rarity Badge */
+.rarity-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border: 1px solid;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Item Rarity Display */
+.item-rarity {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Rarity Statistics Modal */
+.rarity-stats-summary {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.rarity-breakdown {
+    margin-bottom: 20px;
+}
+
+.rarity-bar-container {
+    margin-bottom: 10px;
+}
+
+.rarity-bar-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.rarity-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.rarity-bar-fill {
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.rarity-bar-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.rarity-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.rarity-info-card {
+    padding: 15px;
+    border: 2px solid;
+    border-radius: var(--border-radius);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.rarity-info-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rarity-info-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.rarity-info-stats {
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+/* Rarity Drop Notification */
+@keyframes rarityPulse {
+    0% { 
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.rarity-drop-notification {
+    animation: rarityPulse 2s ease;
+    box-shadow: 0 0 30px currentColor;
+}
+
+/* Rarity Glow Effects */
+.glow-common { box-shadow: 0 0 5px #808080; }
+.glow-uncommon { box-shadow: 0 0 10px #1eff00; }
+.glow-rare { box-shadow: 0 0 15px #0070dd; }
+.glow-epic { 
+    box-shadow: 0 0 20px #a335ee;
+    animation: epicGlow 2s infinite alternate;
+}
+.glow-legendary { 
+    box-shadow: 0 0 25px #ff8000;
+    animation: legendaryGlow 2s infinite alternate;
+}
+.glow-mythic { 
+    box-shadow: 0 0 30px #ff00ff;
+    animation: mythicGlow 1s infinite alternate;
+}
+.glow-divine { 
+    box-shadow: 0 0 35px #00ffff;
+    animation: divineGlow 0.5s infinite alternate;
+}
+
+@keyframes epicGlow {
+    from { box-shadow: 0 0 20px #a335ee; }
+    to { box-shadow: 0 0 30px #c154ff; }
+}
+
+@keyframes legendaryGlow {
+    from { box-shadow: 0 0 25px #ff8000; }
+    to { box-shadow: 0 0 35px #ffaa00; }
+}
+
+@keyframes mythicGlow {
+    from { box-shadow: 0 0 30px #ff00ff; }
+    to { box-shadow: 0 0 40px #ff66ff; }
+}
+
+@keyframes divineGlow {
+    from { box-shadow: 0 0 35px #00ffff; }
+    to { box-shadow: 0 0 45px #ffffff; }
+}
+
+/* Inventory Item dengan Rarity */
+.inventory-item.rarity-highlight {
+    position: relative;
+    overflow: hidden;
+}
+
+.inventory-item.rarity-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Tooltip Rarity */
+.rarity-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9rem;
+    z-index: 1000;
+    max-width: 200px;
+    pointer-events: none;
+}
+
+/* Rarity Comparison */
+.rarity-comparison {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.rarity-comparison-item {
+    flex: 1;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.rarity-comparison-item.better {
+    border: 2px solid var(--success);
+}
+
+.rarity-comparison-item.worse {
+    border: 2px solid var(--danger);
+}
+
+/* Rarity Progress Bar */
+.rarity-progress {
+    margin: 20px 0;
+}
+
+.rarity-progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.rarity-progress-bar {
+    height: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.rarity-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rarity-start), var(--rarity-end));
+    transition: width 0.5s ease;
+}
